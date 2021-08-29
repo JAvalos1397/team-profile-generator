@@ -1,18 +1,18 @@
 const inquirer = require("inquirer");
 const fs = require('fs');
 
-const generateEmployee = require('./src/generateEmployee');
-
+const generateEP = require('./src/generateEmployee');
+// console.log(generateEmployee)
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
 
 //arrays
-const employeeArray = [];
-
+const internArray = [];
+const engineerArray = [];
+const managerArray = [];
 
 function initApp() {
-    startHtml();
     addEmployee();
 }
 
@@ -70,21 +70,22 @@ function addEmployee() {
                 switch(role) {
                     case 'Engineer': {
                         newMember = new Engineer(name,id,email,roleInfo)
-                        employeeArray.push(generateEngineer(newMember))
+                        engineerArray.push(generateEP.generateEngineer(newMember))
+                        
                         break;
                     }
                     case 'Intern': {
                         newMember = new Intern(name,id,email,roleInfo);
-                        employeeArray.push(generateIntern(newMember));
+                        internArray.push(generateEP.generateIntern(newMember));
                         break;
                     }
                     case 'Manager': {
                         newMember = new Manager(name,id,email,roleInfo);
-                        employeeArray.push(generateManager(newMember));
+                        managerArray.push(generateEP.generateManager(newMember));
                         break;
                     }
                 }
-                addHtml(newMember).then(() => {
+                
                     switch(moreMembers) {
                         case 'Yes':{
                             addEmployee();
@@ -95,20 +96,26 @@ function addEmployee() {
                             break;
                         }
                     }
-                })
+                
             })
         })
 
 }
 
 
-function startHtml(){
-    console.log("started")
-}
-function addHtml(newMember) {
-    console.log('added')
-}
 function finishHtml() {
-    console.log(employeeArray)
+   markup = generateEP.htmlMarkup(internArray.join(),engineerArray.join(),managerArray.join())
+   writeUpHtml(markup)
 }
+
+function writeUpHtml(markup) {
+    console.log(filename)
+    fs.writeFile("./dist/index.html", markup, (err) => {
+        if (err) {
+            console.log(err)
+        }
+        console.log("Your Team is generated!")
+    })
+};
+
 initApp();
