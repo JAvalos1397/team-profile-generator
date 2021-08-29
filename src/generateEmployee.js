@@ -1,7 +1,7 @@
 const Employee = require("../lib/Employee");
 const Manager = require("../lib/Manager");
 
-const generateEngineer = (Employee) => {
+const generateEngineer = (employee) => {
    return `<header class="p-3 mb-2 bg-primary text-white"><h1>Team Summary</h1></header>
    <div class="card" style="width: 18rem;">
      <div class="card-body">
@@ -38,7 +38,7 @@ const generateManager = (employee) => {
   </div>`
 };
 
-const htmlMarkup = (intern, engineer,manager) => {
+const htmlMarkup = (intern,engineer,manager) => {
   return `<!DOCTYPE html>
   <html lang="en">
   <head>
