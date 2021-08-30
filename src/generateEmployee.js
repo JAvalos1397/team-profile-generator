@@ -1,44 +1,47 @@
-const Employee = require("../lib/Employee");
-const Manager = require("../lib/Manager");
+
 
 const generateEngineer = (employee) => {
-   return `<header class="p-3 mb-2 bg-primary text-white"><h1>Team Summary</h1></header>
+
+   return `<div class ='class'><header class="p-3 mb-2 bg-primary text-white"><h2>${employee.name}</h2></header>
    <div class="card" style="width: 18rem;">
      <div class="card-body">
-       <h5 class="card-title">${employee.name} ID:${employee.id}</h5>
-       <h6 class="card-subtitle mb-2 text-muted">${employee.role}</h6>
+       <h5 class="card-title">Title:${employee.getRole()}</h5>
+       <h6 class="card-subtitle mb-2 text-muted">ID:${employee.id}</h6>
        <a href="mailto:${employee.email}" class="card-link">${employee.email}</a>
-       <a href="https://www.github.com/${employee.roleinfo}" class="card-link">${employee.email}</a>
+       <a href="https://www.github.com/${employee.roleInfo}" class="card-link">${employee.roleInfo}</a>
 
      </div>
+   </div>
    </div>`
 };
 
 const generateIntern = (employee) => {
-  return `<header class="p-3 mb-2 bg-primary text-white"><h1>Team Summary</h1></header>
+  return `<header class="p-3 mb-2 bg-primary text-white"><h2>${employee.name}</h2></header>
   <div class="card" style="width: 18rem;">
     <div class="card-body">
-      <h5 class="card-title">${employee.name} ID:${employee.id}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">${employee.role}</h6>
+      <h5 class="card-title">Title:${employee.getRole()}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">ID:${employee.id}</h6>
       <a href="mailto:${employee.email}" class="card-link">${employee.email}</a>
-      <p class="card-text">Graduated from ${employee.roleinfo}</p>
+      <p class="card-text">Graduated from ${employee.roleInfo}</p>
     </div>
   </div>`
 };
 
 const generateManager = (employee) => {
-  return `<header class="p-3 mb-2 bg-primary text-white"><h1>Team Summary</h1></header>
+  return `<div class='co-md'><header class="p-3 mb-2 bg-primary text-white"><h2>${employee.name}</h2></header>
   <div class="card" style="width: 18rem;">
     <div class="card-body">
-      <h5 class="card-title">${employee.name} ID:${employee.id}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">${employee.role}</h6>
+      <h5 class="card-title">Title:${employee.getRole()}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">ID:${employee.id}</h6>
       <a href="mailto:${employee.email}" class="card-link">${employee.email}</a>
-      <p class="card-text">Phone# ${employee.roleinfo}</p>
+      <p class="card-text">Office Phone#: ${employee.roleInfo}</p>
     </div>
+  </div>
   </div>`
 };
 
-const htmlMarkup = (intern,engineer,manager) => {
+const htmlMarkup = (data) => {
+  // console.log(engineers.engineers)
   return `<!DOCTYPE html>
   <html lang="en">
   <head>
@@ -54,17 +57,17 @@ const htmlMarkup = (intern,engineer,manager) => {
      <div class='container'> 
       <div class ='row'>
      <h2 class='role'>Manager</h2>
-      ${manager.managerArray}
+      ${data.managers}
       </div>
 
       <div class ='row'>
      <h2 class='role'>Engineer</h2>
-      ${engineer.engineerArray}
+      ${data.engineers}
       </div>
 
       <div class ='row'>
      <h2 class='role'>Intern</h2>
-      ${intern.internArray}
+      ${data.interns}
 
       </div>
      </div>

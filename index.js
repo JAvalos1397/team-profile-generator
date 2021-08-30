@@ -42,8 +42,7 @@ function addEmployee() {
             const info = role;
             switch (info) {
                 case 'Engineer': {
-                   var roleInfo = 'Github username';
-                    console.log('Engineer')
+                   var roleInfo = 'Github username';1
                     break;
                 }
                 case 'Intern': {
@@ -65,7 +64,8 @@ function addEmployee() {
                 choices: ['Yes', 'No'],
                 name: 'moreMembers',
             }])
-            .then(({roleInfo,moreMembers}) => {
+            .then(({ roleInfo,moreMembers}) => {
+               
                 var newMember;
                 switch(role) {
                     case 'Engineer': {
@@ -85,7 +85,6 @@ function addEmployee() {
                         break;
                     }
                 }
-                
                     switch(moreMembers) {
                         case 'Yes':{
                             addEmployee();
@@ -104,12 +103,17 @@ function addEmployee() {
 
 
 function finishHtml() {
-   markup = generateEP.htmlMarkup(internArray.join(),engineerArray.join(),managerArray.join())
+  const arrays = {
+      engineers: engineerArray.join(),
+      interns: internArray.join(),
+      managers: managerArray.join(),
+  }
+  const markup = generateEP.htmlMarkup(arrays)
+
    writeUpHtml(markup)
 }
 
 function writeUpHtml(markup) {
-    console.log(filename)
     fs.writeFile("./dist/index.html", markup, (err) => {
         if (err) {
             console.log(err)
