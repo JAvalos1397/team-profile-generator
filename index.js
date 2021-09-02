@@ -65,10 +65,11 @@ function addEmployee() {
                 name: 'moreMembers',
             }])
             .then(({ roleInfo,moreMembers}) => {
-               
+               console.log(roleInfo)
                 var newMember;
                 switch(role) {
                     case 'Engineer': {
+                        console.log(roleInfo)
                         newMember = new Engineer(name,id,email,roleInfo)
                         engineerArray.push(generateEP.generateEngineer(newMember))
                         

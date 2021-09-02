@@ -8,7 +8,7 @@ const generateEngineer = (employee) => {
        <h5 class="card-title">Title:${employee.getRole()}</h5>
        <h6 class="card-subtitle mb-2 text-muted">ID:${employee.id}</h6>
        <a href="mailto:${employee.email}" class="card-link">${employee.email}</a>
-       <a href="https://www.github.com/${employee.roleInfo}" class="card-link">${employee.roleInfo}</a>
+       <a href="https://www.github.com/${employee.getGithub()}" class="card-link">${employee.getGithub()}</a>
 
      </div>
    </div>
@@ -22,7 +22,7 @@ const generateIntern = (employee) => {
       <h5 class="card-title">Title:${employee.getRole()}</h5>
       <h6 class="card-subtitle mb-2 text-muted">ID:${employee.id}</h6>
       <a href="mailto:${employee.email}" class="card-link">${employee.email}</a>
-      <p class="card-text">Graduated from ${employee.roleInfo}</p>
+      <p class="card-text">Graduated from ${employee.getGithub()}</p>
     </div>
   </div>`
 };
@@ -34,7 +34,7 @@ const generateManager = (employee) => {
       <h5 class="card-title">Title:${employee.getRole()}</h5>
       <h6 class="card-subtitle mb-2 text-muted">ID:${employee.id}</h6>
       <a href="mailto:${employee.email}" class="card-link">${employee.email}</a>
-      <p class="card-text">Office Phone#: ${employee.roleInfo}</p>
+      <p class="card-text">Office Phone#: ${employee.getGithub()}</p>
     </div>
   </div>
   </div>`
